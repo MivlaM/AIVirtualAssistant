@@ -78,7 +78,7 @@ def TakeCommand():
 
     except Exception as e:
         print(e)
-        print("Say that again please... ")
+        print("Por favor repita... ")
         return "None"
     return query
 
@@ -128,15 +128,15 @@ if __name__ ==  "__main__":
 
 
         elif 'search in chrome' in query:
-             speak('What would you like to search?')
+             speak('O que você gostaria de pesquisar?')
              search = TakeCommand().lower()
 
              wb.get('chrome').open_new_tab(search + '.com')
 
         elif "search youtube" in query:
-            speak("What should I search for?")
+            speak("O que eu deveria pesquisar?")
             Search_Term = TakeCommand().lower()
-            speak("Here we go to YouTube") 
+            speak("Lá vamos nós para o YouTube") 
             wb.open("https://www.youtube.com/results?search_query="+Search_Term)
         
         elif "search google" in query:
@@ -166,10 +166,10 @@ if __name__ ==  "__main__":
             os.startfile(ms_word) #You need the paid version
  
         elif "write a note" in query:
-            speak("What should I write")
+            speak("O que eu deveria escrever?")
             notes = TakeCommand()
             file = open("notes.txt","w")
-            speak("Sir should I include date and time?")
+            speak("Devo incluir data e hora?")
             ans = TakeCommand()
             if "yes" or "sure" in ans:
                 strTime = datetime.datetime.now().strftime("%H:%M:%S")
@@ -181,7 +181,7 @@ if __name__ ==  "__main__":
                 file.write(notes)
         
         elif "show notes" in query:
-            speak("showing notes")
+            speak("mostrando anotações")
             file = open("notes.txt", "r")
             print(file.read())
             speak(file.read())
