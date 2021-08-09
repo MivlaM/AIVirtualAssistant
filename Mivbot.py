@@ -193,7 +193,7 @@ if __name__ ==  "__main__":
             if "play music" in query:
                 audio_1 = "E:\cr"
                 audio_2 = "E:\dr"
-                speak ("Which one should I choose, potato or tomato")
+                speak ("Qual devo escolher, potato ou tomato")
                 ans = (TakeCommand().lower())
                 while(ans!= "potato" and ans!= "tomato"):
                     speak("Tente de novo!")
@@ -212,7 +212,7 @@ if __name__ ==  "__main__":
             speak("Select a random number")
             rand = (TakeCommand().lower())
             while("number" not in rand and rand !="random"):
-                speak("I could not understand you. Please try again.")
+                speak("Não conseguir entender, por favor repita")
                 rand =(TakeCommand().lower())
                 if "number" in rand:
                     rand = int(rand.replace("number ",""))
@@ -226,7 +226,7 @@ if __name__ ==  "__main__":
         elif "play song" in query:
             music_dir = "E:\dr"  
             music = os.listdir(music_dir)
-            speak("What should I choose?")
+            speak("O que devo escolher?")
             ans = TakeCommand().lower()
             no = int(ans.replace("number", ""))
             os.startfile(os.path.join(music_dir,music[no]))      
@@ -240,23 +240,27 @@ if __name__ ==  "__main__":
             speak("Eu agradeço a você desde o fundo de meu coração")
             TakeCommand().lower()
 
+        elif "Who is your creator" in query:
+            speak("O meu criador é um exemplo de pessoa, não posso te dizer muito a respeito dele, ele gosta de se manter discreto")
+            TakeCommand().lower()
+
         elif "remember that" in query:
-            speak("What should I remember?")
+            speak("O que eu devo me lembrar")
             memory = TakeCommand()
-            speak("You asked me to remember that"+memory)
+            speak("Você me pediu para me lembrar"+memory)
             remember = open("memory.txt","w")
             remember.write(memory)
             remember.close()
 
         elif "do you remember anything" in query:
             remember = open("memory.txt","r")
-            speak("You asked me to remember that"+remember.read())
+            speak("Você me mandou me lembrar disso"+remember.read())
 
 
         elif "where is" in query:
             query = query.replace("where is","")
             location = query
-            speak("User asked to locate"+location)
+            speak("Você me pediu para localizar"+location)
             wb.open_new_tab("https://www.google.com/maps/place/"+location)
 
 
@@ -266,7 +270,7 @@ if __name__ ==  "__main__":
                 data = json.load(jsonObj)
                 i = 1
 
-                speak("Here are some top headlines from the Entertainment Industry")
+                speak("Aqui estão as novas notícias sobre entretenimento")
                 print("========= Top Headlines ===========")
                 for item in data["articles"]:
                     print(str(i)+". "+item["title"]+"\n")
@@ -284,7 +288,7 @@ if __name__ ==  "__main__":
             res = client.query("".join(query))
             answer = next(res.results).text
             print("The answer is : "+answer)        
-            speak("The answer is "+answer)
+            speak("A resposta é "+answer)
 
 
         elif "what is" in query or "who is" in query:
@@ -299,7 +303,7 @@ if __name__ ==  "__main__":
 
 
         elif "stop listening" in query:
-            speak("For how many seconds do you want me to stop listening to your commands?")
+            speak("Por quantos segundos você deseja que eu pare de executar vossos comandos?")
             ans = int(TakeCommand())
             time.sleep(ans)
             print(ans)
