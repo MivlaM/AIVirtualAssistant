@@ -134,7 +134,7 @@ if __name__ ==  "__main__":
              wb.get('chrome').open_new_tab(search + '.com')
 
         elif "search youtube" in query:
-            speak("O que eu deveria pesquisar?")
+            speak("O que eu devo pesquisar no YouTube?")
             Search_Term = TakeCommand().lower()
             speak("Lá vamos nós para o YouTube") 
             wb.open("https://www.youtube.com/results?search_query="+Search_Term)
